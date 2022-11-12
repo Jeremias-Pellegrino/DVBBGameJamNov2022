@@ -11,30 +11,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect4" type="TextureRect" parent="."]
-margin_right = 1020.0
-margin_bottom = 600.0
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="."]
-margin_right = 1020.0
-margin_bottom = 600.0
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_right = 1020.0
-margin_bottom = 600.0
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1020.0
 margin_bottom = 600.0
@@ -61,6 +37,3 @@ margin_right = 1000.0
 margin_bottom = 530.0
 texture_normal = ExtResource( 1 )
 expand = true
-
-[connection signal="button_up" from="LeftArrow" to="." method="_on_LeftArrow_button_up"]
-[connection signal="button_up" from="RightArrow" to="." method="_on_RightArrow_button_up"]
