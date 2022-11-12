@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/teatro_municipal_bahia_blanca-1020x600.webp-d08aeab4b34ed9c2d31bd9f8e2ea5236.stex"
+path="res://.import/Placeholder laberinto.png-b689b849df31614a3f29228528e69ee4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level 1/teatro_municipal_bahia_blanca-1020x600.webp"
-dest_files=[ "res://.import/teatro_municipal_bahia_blanca-1020x600.webp-d08aeab4b34ed9c2d31bd9f8e2ea5236.stex" ]
+source_file="res://Level 2/Placeholder laberinto.png"
+dest_files=[ "res://.import/Placeholder laberinto.png-b689b849df31614a3f29228528e69ee4.stex" ]
 
 [params]
 

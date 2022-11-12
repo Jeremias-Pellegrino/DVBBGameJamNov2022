@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/obras-teatro-municipal-telon.jpg-7ec8db00c78560c0cace943361c015da.stex"
+path="res://.import/teatro3.webp-2daf0efda6c312e10b77f4ce422088ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Level 1/obras-teatro-municipal-telon.jpg"
-dest_files=[ "res://.import/obras-teatro-municipal-telon.jpg-7ec8db00c78560c0cace943361c015da.stex" ]
+source_file="res://Level 1/teatro3.webp"
+dest_files=[ "res://.import/teatro3.webp-2daf0efda6c312e10b77f4ce422088ab.stex" ]
 
 [params]
 
