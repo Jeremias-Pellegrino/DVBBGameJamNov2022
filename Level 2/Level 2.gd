@@ -12,6 +12,7 @@ var data = {
 #	10 | 11
 #	00 | 01
 
+#podria eliminar el dict data y usar este chequeando si existe un valor y ya.
 var associatedRoom = {
 	"00": ["", "01", "10", ""],
 	"01": ["", "", "11", "00"],
@@ -35,23 +36,18 @@ func _ready():
 	
 func nextInitialDoor(forDoor: int):
 	
+	#la proxima posicion inicial siempre va ser opuesta la final current
 	nextInitialDoor = selectedDoor + 2
 	if nextInitialDoor > 3:
 		nextInitialDoor -= 4
 	
-	print("current door ", currentDoor)
-	print("next initial door ", nextInitialDoor)
+	#el indice relativo en funcion de la proxima posicion inicial
 	var index = forDoor + nextInitialDoor
 	if index > 3:
 		index = index - 4
-	
-	print("next index ", index)
 	return index
 	
-func loadNext():
-	print("next room ",nextRoom)
-	print("next door ",selectedDoor)
-	
+func loadNext():	
 	var right = nextInitialDoor(1)
 	var middle = nextInitialDoor(2)
 	var left = nextInitialDoor(3)
@@ -59,22 +55,27 @@ func loadNext():
 	isRightAvailable = data[nextRoom][right]
 	isMiddleAvailable = data[nextRoom][middle]
 	isLeftAvailable = data[nextRoom][left]
-
-	print("isRightAvailable ", isRightAvailable, " right door: ", right)
-	print("isMiddleAvailable ", isMiddleAvailable, " middle door: ", middle)
-	print("isLeftAvailable ", isLeftAvailable, " left door: ", left)
 	
 	if !isLeftAvailable:
 		$LeftDoorButton.hide()
 	else:
 		$LeftDoorButton.show()
+		
+	if !isMiddleAvailable:
+		$MiddleDoorButton.hide()
+	else:
+		$MiddleDoorButton.show()
+		
+	if !isRightAvailable:
+		$RightDoorButton.hide()
+	else:
+		$RightDoorButton.show()
 
 	currentRoom = nextRoom
 	currentDoor = nextInitialDoor
 
 func setupNextRoom():
 	nextRoom = associatedRoom[currentRoom][selectedDoor]
-	
 	loadNext()
 
 # current -1
