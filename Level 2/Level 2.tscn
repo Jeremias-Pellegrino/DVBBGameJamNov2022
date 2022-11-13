@@ -29,12 +29,18 @@ margin_left = 863.0
 margin_top = 123.0
 margin_right = 988.0
 margin_bottom = 560.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MiddleDoorButton" type="TextureButton" parent="."]
 margin_left = 322.0
 margin_top = 208.0
 margin_right = 703.0
 margin_bottom = 475.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="button_up" from="LeftDoorButton" to="." method="_on_LeftDoorButton_button_up"]
 [connection signal="button_up" from="RightDoorButton" to="." method="_on_RightDoorButton_button_up"]

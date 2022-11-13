@@ -1,14 +1,11 @@
 extends Resource
 
-export(int) var health
-export(Resource) var doors
-export(Array, String) var strings
+#export(int) var health
+#export(Resource) var doors
+export(Array, bool) var doors
 
-func _init(p_health = 0, p_doors = null, p_strings = []):
-	health = p_health
+func _init(p_doors = []):
 	doors = p_doors
-	strings = p_strings
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
