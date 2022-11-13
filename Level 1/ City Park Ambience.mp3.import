@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ City Park Ambience.mp3-edcc49304439a7494160a47b7efcca2c.mp3str"
+
+[deps]
+
+source_file="res://Level 1/ City Park Ambience.mp3"
+dest_files=[ "res://.import/ City Park Ambience.mp3-edcc49304439a7494160a47b7efcca2c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

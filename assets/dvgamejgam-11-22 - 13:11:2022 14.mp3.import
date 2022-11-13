@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/dvgamejgam-11-22 - 13:11:2022 14.mp3-03f82b8c8f0aaf6303f54b4467c92211.mp3str"
+
+[deps]
+
+source_file="res://assets/dvgamejgam-11-22 - 13:11:2022 14.mp3"
+dest_files=[ "res://.import/dvgamejgam-11-22 - 13:11:2022 14.mp3-03f82b8c8f0aaf6303f54b4467c92211.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

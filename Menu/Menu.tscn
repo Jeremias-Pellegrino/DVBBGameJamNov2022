@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Menu/dvgamejgam-11-22 - 13:11:2022 13.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/menu.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="Control" type="Control"]
 script = ExtResource( 1 )
@@ -11,14 +43,7 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1026.0
 margin_bottom = 608.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="TextureRect"]
-margin_right = 1016.0
-margin_bottom = 590.0
-color = Color( 0.333333, 0.129412, 0.129412, 1 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,12 +59,13 @@ __meta__ = {
 }
 
 [node name="Story" type="Button" parent="VBoxContainer"]
-margin_top = 185.0
+margin_top = 197.0
 margin_right = 503.0
-margin_bottom = 205.0
-text = "Story"
+margin_bottom = 217.0
+text = "Start"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
+visible = false
 margin_top = 209.0
 margin_right = 503.0
 margin_bottom = 229.0
@@ -54,5 +80,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.703
+autoplay = true
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer"]
+anims/RESET = SubResource( 3 )
+anims/transition = SubResource( 2 )
+
 [connection signal="button_up" from="VBoxContainer/Story" to="." method="_on_Story_button_up"]
 [connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_Options_button_up"]
+[connection signal="animation_finished" from="TransitionLayer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

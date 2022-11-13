@@ -1,26 +1,24 @@
 extends Node
 
-#south east north west
-var data = {
-	"00": [false, true, true, false],
-	"01": [false, false, true, true],
-	"10": [true, true, false, false],
-	"11": [true, false, false, true]
-}
-
 # Rooms
 #	10 | 11
 #	00 | 01
 
 #podria eliminar el dict data y usar este chequeando si existe un valor y ya.
 var associatedRoom = {
+	#south east north west
 	"00": ["", "01", "10", ""],
-	"01": ["", "", "11", "00"],
+	"01": ["", "02", "11", "00"],
+	"02": ["", "", "12", "01"],
 	"10": ["00", "11", "", ""],
-	"11": ["01", "", "", "10"]
+	"11": ["01", "12", "", "10"],
+	"12": ["02", "", "22", "11"],
+	"20": ["10", "21", "", ""],
+	"21": ["11", "22", "", "20"],
+	"22": ["12", "", "", "21"]
 }
 
-var currentRoom = "00"
+var currentRoom = "01"
 var currentDoor = 0
 
 var nextRoom = ""
@@ -32,7 +30,8 @@ export var isMiddleAvailable = false
 export var isRightAvailable = false
 
 func _ready():
-	print(data[currentRoom][currentDoor])
+	#print(data[currentRoom][currentDoor])
+	pass
 	
 func nextInitialDoor(forDoor: int):
 	
@@ -48,13 +47,18 @@ func nextInitialDoor(forDoor: int):
 	return index
 	
 func loadNext():	
+	
+	print("currentRoom: ", currentRoom)
+	print("currentDoor: ", currentDoor)
+	
 	var right = nextInitialDoor(1)
 	var middle = nextInitialDoor(2)
 	var left = nextInitialDoor(3)
 	
-	isRightAvailable = data[nextRoom][right]
-	isMiddleAvailable = data[nextRoom][middle]
-	isLeftAvailable = data[nextRoom][left]
+	#TODO: make it safe for "" cases.
+	isRightAvailable = associatedRoom[nextRoom][right] != ""
+	isMiddleAvailable = associatedRoom[nextRoom][middle] != ""
+	isLeftAvailable = associatedRoom[nextRoom][left] != ""
 	
 	if !isLeftAvailable:
 		$LeftDoorButton.hide()
@@ -70,9 +74,17 @@ func loadNext():
 		$RightDoorButton.hide()
 	else:
 		$RightDoorButton.show()
-
+	
 	currentRoom = nextRoom
 	currentDoor = nextInitialDoor
+	
+	if currentRoom == "11":
+		$Sprite.show()
+	else:
+		$Sprite.hide()
+	
+	if currentRoom == "20" && currentDoor == 1:
+		$TransitionLayer/AnimationPlayer.play("transition")
 
 func setupNextRoom():
 	nextRoom = associatedRoom[currentRoom][selectedDoor]
@@ -116,3 +128,7 @@ func _on_MiddleDoorButton_button_up():
 		selectedDoor = 2
 
 	setupNextRoom()
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	$TransitionLayer/ColorRect.hide()
+	$FinalImage.show()
